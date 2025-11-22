@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Settings</title>
+</head>
+<body>
+    <div class="header">
+        <div class="top-nav">
+            <a href="index.html">Home</a>
+            <p>Welcome to My page</p>
+            <a href="https://github.com/IamBe9?tab=repositories">My github</a>
+        </div>
+    </div>
+
+    <div class="settings-container">
+        <h1>Settings</h1>
+        <p>This is the settings page. Here you can configure your preferences.</p>
+        
+        <button id="theme-toggle">Dark</button>
+    </div>
+
+    <script>
+        const body = document.body;
+        const toggle = document.getElementById("theme-toggle");
+
+        // Загружаем сохранённую тему
+        if (localStorage.getItem("theme") === "dark") {
+            body.classList.add("dark");
+            toggle.textContent = "Light";
+        } else {
+            toggle.textContent = "Dark";
+        }
+
+        // Смена темы
+        toggle.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                toggle.textContent = "Light";
+                localStorage.setItem("theme", "dark");
+            } else {
+                toggle.textContent = "Dark";
+                localStorage.setItem("theme", "light");
+            }
+        });
+    </script>
+
+
+</body>
+</html>
